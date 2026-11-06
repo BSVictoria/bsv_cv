@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Berberovics-Sóvári Viktória – FM tanácsadó</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Terv: hűvös lenvászon alap, mély éjkék tinta, zsálya kiegészítő, acél-petrolkék kiemelés.
+   Elrendezés: a fejléc mögött szintvonalas „helyszínrajz”, a szakaszok alaprajz-szerű szintjelöléssel. */
+:root {
+  --bg: #EDF0EC;
+  --surface: #F7F8F5;
+  --ink: #17273A;
+  --muted: #55626D;
+  --sage: #82978A;
+  --line: #D3D9D6;
+  --accent: #33698A;
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101922; --surface: #16222D; --ink: #E5EAE7; --muted: #A1ADB4;
+    --sage: #7E9785; --line: #263441; --accent: #82B3CF; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101922; --surface: #16222D; --ink: #E5EAE7; --muted: #A1ADB4;
+  --sage: #7E9785; --line: #263441; --accent: #82B3CF; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; line-height: 1.15; }
+.wrap { width: min(1080px, 100% - 40px); margin-inline: auto; }
+
+/* Navigáció */
+nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { font-family: var(--display); font-size: 1.15rem; text-decoration: none; }
+nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font-size: .92rem; flex-wrap: wrap; }
+nav ul a { text-decoration: none; color: var(--muted); }
+nav ul a:hover { color: var(--ink); }
+@media (max-width: 720px) { nav ul { display: none; } }
+
+/* Fejléc */
+header { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+#contours { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero { position: relative; padding: 88px 0 72px; display: grid; gap: 28px; max-width: 760px; }
+.eyebrow { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.hero h1 { font-size: clamp(2.3rem, 5.6vw, 4.1rem); }
+.motto { margin: 0; font-family: var(--display); font-size: clamp(1.15rem, 2.2vw, 1.45rem); line-height: 1.35; padding-left: 18px; border-left: 3px solid var(--accent); max-width: 40ch; }
+.motto em { font-style: normal; color: var(--accent); }
+.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 60ch; margin: 0; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: .95rem; border: 1.5px solid var(--ink); }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.ghost:hover { background: var(--surface); }
+
+.facts { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+.facts div { padding: 22px 20px 26px 0; display: grid; gap: 4px; }
+.facts strong { font-family: var(--display); font-weight: 400; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.facts span { color: var(--muted); font-size: .9rem; line-height: 1.4; }
+@media (max-width: 760px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+
+/* Szakaszok – szintjelölés, mint egy alaprajzon */
+section { padding: 84px 0; border-bottom: 1px solid var(--line); }
+.sec-head { display: grid; grid-template-columns: 120px 1fr; gap: 24px; margin-bottom: 44px; align-items: baseline; }
+.level { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); font-weight: 600; border-top: 2px solid var(--sage); padding-top: 8px; }
+.sec-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.sec-head p { color: var(--muted); margin: 10px 0 0; max-width: 62ch; }
+@media (max-width: 640px) { .sec-head { grid-template-columns: 1fr; gap: 10px; } .level { width: max-content; } }
+
+/* Pillérek */
+.pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.pillar { padding: 28px 28px 30px 0; border-bottom: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
+.pillar:nth-child(odd) { border-right: 1px solid var(--line); }
+.pillar:nth-child(even) { padding-left: 28px; }
+.pillar h3 { font-size: 1.35rem; }
+.pillar p { margin: 0; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.tags span { font-size: .78rem; padding: 3px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+@media (max-width: 720px) {
+  .pillars { grid-template-columns: 1fr; }
+  .pillar, .pillar:nth-child(even) { padding: 24px 0; border-right: 0; }
+  .pillar:nth-child(odd) { border-right: 0; }
+}
+
+
+/* Minisztériumi ütemek */
+.phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 2px solid var(--ink); }
+.phases li { padding: 22px 22px 26px 0; display: grid; gap: 10px; align-content: start; position: relative; }
+.phases li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+.phases .step { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.phases h3 { font-size: 1.3rem; }
+.phases p { margin: 0; color: var(--muted); font-size: .97rem; }
+.why { margin-top: 40px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 24px 28px; display: grid; grid-template-columns: 160px 1fr; gap: 20px; }
+.why h3 { font-size: 1.35rem; }
+.why p { margin: 0; max-width: 70ch; }
+@media (max-width: 900px) { .phases { grid-template-columns: 1fr 1fr; } .phases li:nth-child(3) { padding-left: 0; border-left: 0; } .phases li:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 560px) { .phases { grid-template-columns: 1fr; } .phases li, .phases li + li { padding: 20px 0; border-left: 0; } .phases li + li { border-top: 1px solid var(--line); } .why { grid-template-columns: 1fr; padding: 20px; } }
+
+/* Referenciák */
+.refgroup { font-family: var(--body); font-weight: 600; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.refs + .refgroup { margin-top: 44px; }
+.ref b { font-weight: 600; color: var(--ink); }
+.refs { display: grid; gap: 18px; }
+.ref { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--sage); border-radius: 6px; padding: 26px 28px; display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+.ref .meta { display: grid; gap: 4px; align-content: start; }
+.ref .meta h3 { font-size: 1.25rem; }
+.ref .meta span { color: var(--muted); font-size: .9rem; }
+.ref dl { margin: 0; display: grid; grid-template-columns: 110px 1fr; gap: 8px 16px; }
+.ref dt { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--sage); font-weight: 600; padding-top: 3px; }
+.ref dd { margin: 0; }
+.todo { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); padding: 1px 6px; border-radius: 3px; font-size: .92em; }
+.ref.empty { border-left-style: dashed; border-left-color: var(--accent); }
+@media (max-width: 720px) { .ref { grid-template-columns: 1fr; padding: 22px; } .ref dl { grid-template-columns: 1fr; gap: 2px; } .ref dd { margin-bottom: 10px; } }
+
+/* Életút */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li { display: grid; grid-template-columns: 140px 22px 1fr; gap: 16px; }
+.timeline .when { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .95rem; padding-top: 2px; text-align: right; }
+.timeline .rail { position: relative; }
+.timeline .rail::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.timeline .rail::after { content: ""; position: absolute; left: 5px; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--sage); }
+.timeline li.key .rail::after { background: var(--accent); border-color: var(--accent); }
+.timeline .what { padding-bottom: 30px; }
+.timeline .what h3 { font-family: var(--body); font-weight: 600; font-size: 1.05rem; }
+.timeline .what p { margin: 4px 0 0; color: var(--muted); max-width: 60ch; }
+@media (max-width: 600px) { .timeline li { grid-template-columns: 22px 1fr; } .timeline .when { grid-column: 2; text-align: left; order: -1; } .timeline .rail { grid-row: 1 / span 2; } }
+
+/* Közösség */
+.comm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.comm article { border-top: 2px solid var(--ink); padding-top: 16px; display: grid; gap: 8px; align-content: start; }
+.comm h3 { font-size: 1.3rem; }
+.comm .since { font-size: .85rem; color: var(--accent); font-weight: 600; }
+.comm ul { margin: 0; padding-left: 18px; color: var(--muted); }
+@media (max-width: 820px) { .comm { grid-template-columns: 1fr; } }
+
+/* Képzések */
+.edu { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.edu h3 { font-size: 1.2rem; margin-bottom: 14px; }
+.edu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.edu li { border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.edu li b { font-weight: 600; display: block; }
+.edu li span { color: var(--muted); font-size: .92rem; }
+@media (max-width: 720px) { .edu { grid-template-columns: 1fr; } }
+
+/* Ami most épül */
+.growing { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; }
+.growing .trio { display: block; margin-top: 14px; font-family: var(--body); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.growing blockquote { margin: 0; font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.3; }
+.growing p { color: var(--muted); margin: 0 0 12px; }
+@media (max-width: 720px) { .growing { grid-template-columns: 1fr; } }
+
+/* Kapcsolat */
+#kapcsolat { background: var(--ink); color: var(--bg); border-bottom: 0; }
+#kapcsolat .level { color: var(--sage); border-color: var(--sage); }
+#kapcsolat .sec-head p { color: color-mix(in srgb, var(--bg) 75%, transparent); }
+.contact { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 32px; max-width: 760px; }
+.contact div { border-top: 1px solid color-mix(in srgb, var(--bg) 30%, transparent); padding-top: 14px; }
+.contact small { display: block; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin-bottom: 4px; }
+.contact a { text-decoration-color: var(--accent); text-underline-offset: 4px; word-break: break-word; }
+@media (max-width: 720px) { .contact { grid-template-columns: 1fr; } }
+footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb, var(--bg) 60%, transparent); font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Fő navigáció">
+  <div class="wrap">
+    <a class="brand" href="#top">Berberovics-Sóvári Viktória</a>
+    <ul>
+      <li><a href="#erossegek">Erősségek</a></li>
+      <li><a href="#kozszfera">Közszféra</a></li>
+      <li><a href="#referenciak">Referenciák</a></li>
+      <li><a href="#eletut">Életút</a></li>
+      <li><a href="#kozosseg">Közösség</a></li>
+      <li><a href="#kapcsolat">Kapcsolat</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <canvas id="contours" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow">FM tanácsadó · FM vezető</div>
+      <h1>Az épület akkor működik jól, ha az emberek is jól működnek benne.</h1>
+      <p class="motto">Fenntartható működést tervezek: <em>szoftverben</em>, <em>épületben</em> és <em>közösségben</em>.</p>
+      <p class="lead">16 éve dolgozom a létesítménygazdálkodásban: először az épületüzemeltetés terepén, ma CAFM/IWMS rendszerek bevezetőjeként (ArchiFM, IBM TRIRIGA). Célom, hogy a teljes állami ingatlanvagyon üzemeltetését stratégiai szinten felépítsem és megvalósítsam: egységes üzemeltetési gyakorlattal, jelentős költségmegtakarítással és csökkenő karbonlábnyommal.</p>
+      <div class="cta">
+        <a class="btn primary" href="#kapcsolat">Beszéljünk</a>
+        <a class="btn ghost" href="#referenciak">Referenciáim</a>
+      </div>
+    </div>
+    <div class="facts">
+      <div><strong>16+ év</strong><span>FM tapasztalat, ebből 6+ év üzemeltetési projektvezetőként</span></div>
+      <div><strong>5 év</strong><span>CAFM/IWMS bevezetés: ArchiFM és IBM TRIRIGA</span></div>
+      <div><strong>2014 óta</strong><span>a LEO Szakmai Egyesület alapító tagja</span></div>
+      <div><strong>25–30%</strong><span>éves tervszám-túlteljesítés üzemeltetési projektvezetőként</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="erossegek">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="level">Alapozás</div>
+      <div>
+        <h2>Amiben erős vagyok</h2>
+        <p>Az üzemeltetést mindhárom oldalról ismerem: a terepről, a szoftver felől és a stratégia szintjéről.</p>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Üzemeltetés és FM vezetés</h3>
+        <p>Üzemeltetési projektek vezetése a szerződéskötéstől a napi működésig, alvállalkozók és belső csapatok összehangolása, ügyfélkapcsolat.</p>
+        <div class="tags"><span>Projektvezetés</span><span>Szolgáltatásmenedzsment</span><span>Ügyfélkapcsolat</span></div>
+      </div>
+      <div class="pillar">
+        <h3>CAFM/IWMS és digitalizáció</h3>
+        <p>Az ügyfélfolyamatok felmérése és lefordítása rendszerkonfigurációra. Bevezetés, oktatás, és az, hogy a rendszert utána tényleg használják.</p>
+        <div class="tags"><span>ArchiFM</span><span>IBM TRIRIGA</span><span>CAFM/IWMS</span><span>BIM</span><span>PropTech</span><span>Benchmarking</span></div>
+      </div>
+      <div class="pillar">
+        <h3>Tanácsadás és facilitáció</h3>
+        <p>Workshopokat tervezek és vezetek, ahol a különböző érdekelt felek közös nyelvet találnak. Ez a kedvenc munkám.</p>
+        <div class="tags"><span>Workshop facilitáció</span><span>Folyamattervezés</span><span>Változáskezelés</span></div>
+      </div>
+      <div class="pillar">
+        <h3>Fenntartható működés</h3>
+        <p>Környezetvédelmi szakirányú műszaki menedzser vagyok, ESG képzéssel. Az épületüzemeltetést a fenntarthatóság egyik legerősebb eszközének tartom.</p>
+        <div class="tags"><span>ESG</span><span>Energiagazdálkodás</span><span>Szemléletformálás</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kozszfera">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="level">Küldetés</div>
+      <div>
+        <h2>Az állami ingatlanvagyon egységes üzemeltetése</h2>
+        <p>Az állami épületek ma sokféle gyakorlat, szerződés és adatforma szerint működnek. Ezt szeretném egy egységes, mérhető és fenntartható rendszerré építeni, stratégiai szinten megtervezve és a napi működésig végigvíve.</p>
+      </div>
+    </div>
+    <ol class="phases">
+      <li>
+        <span class="step">1. ütem</span>
+        <h3>Átlátható ingatlanvagyon</h3>
+        <p>Egységes ingatlan- és eszköznyilvántartás egy CAFM/IWMS rendszerben: épületek, területek, berendezések, szerződések és költségek egy helyen, összevethető formában. Erre épülhetnek a megalapozott döntések.</p>
+      </li>
+      <li>
+        <span class="step">2. ütem</span>
+        <h3>Egységes üzemeltetési standard</h3>
+        <p>Közös szolgáltatási szintek, folyamatok és KPI-ok minden intézmény számára, egységes szerződéses és riportálási sablonokkal. Így az épületek teljesítménye egymással és a piaci benchmarkokkal is összemérhető.</p>
+      </li>
+      <li>
+        <span class="step">3. ütem</span>
+        <h3>Költségmegtakarítás</h3>
+        <p>Összevont beszerzés, tudatos szolgáltatásmenedzsment és a párhuzamosságok megszüntetése. A megtakarítást az adatok mutatják ki, nem becslések.</p>
+      </li>
+      <li>
+        <span class="step">4. ütem</span>
+        <h3>Karbonlábnyom-csökkentés</h3>
+        <p>Energia- és közműfogyasztás-monitoring, a karbonlábnyom rendszeres mérése és egy épületenkénti dekarbonizációs ütemterv. Az állami épületek így példát mutathatnak a fenntartható működésben.</p>
+      </li>
+    </ol>
+    <div class="why">
+      <h3>Miért én?</h3>
+      <p>16 éves FM pályám alatt az üzemeltetést három oldalról ismertem meg. A terepen dolgoztam, ebből hat évig üzemeltetési projektvezetőként. Öt éve szoftveres oldalon vezetek be CAFM/IWMS rendszereket. A LEO-ban pedig a szakma közös standardjain dolgozom: a benchmarking adattárházon, a LEO 310 BIM-ajánlásokon és a MÉRTÉK rendszeren, amely az üzemeltetés minőségét méri. A közszféra intézményeit is belülről ismerem: dolgoztam a Közbeszerzési és Ellátási Főigazgatóság országos kórházüzemeltetésén, a Semmelweis Egyetem, az ELTE, a Corvinus Egyetem, az MNB Ingatlan, a Várkapitányság és a Nemzetbiztonsági Szakszolgálat projektjein, és KEOP pályázatokat is bíráltam. Workshop facilitátorként ahhoz is értek, hogy sok intézmény és szolgáltató egy irányba mozduljon.</p>
+    </div>
+  </div>
+</section>
+
+<section id="referenciak">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="level">Szerkezet</div>
+      <div>
+        <h2>Referenciák</h2>
+        <p>Ipari létesítményektől egyetemeken és kórházakon át az országos hálózatokig. Mi volt a feladat, mit csináltam, és mi lett belőle.</p>
+      </div>
+    </div>
+    <h3 class="refgroup">Üzemeltetés és digitalizáció</h3>
+    <div class="refs">
+      <article class="ref">
+        <div class="meta"><h3>Üzemeltetési projektvezetés</h3><span>Kraft FM · 2013–2019</span></div>
+        <dl>
+          <dt>Portfólió</dt><dd>Főként ipari létesítmények (GDF SUEZ, Dunamenti Erőmű, Hosszúréti energiaközpont, Dreher sörgyár), irodaházak (Millpark, Quadrum), speciális projektek (strip mall, büntetés-végrehajtási intézet) és országos hálózatok (UPC, ITSH, Főgáz).</dd>
+          <dt>Szerepem</dt><dd>A tender árazásától az ügyfélkapcsolaton és a fenntartható üzemeltetésen át a havi kontrolling jelentésig mindent én koordináltam. Én feleltem a karbantartó csapatokért és az alvállalkozókért is.</dd>
+          <dt>Eredmény</dt><dd>Elégedett ügyfelek, az éves tervszámok rendszeres, <b>25–30%-os túlteljesítése</b>. Országos hibajavítási hálózatot építettem fel szerződött partnerekkel, havária-biztosítással.</dd>
+        </dl>
+      </article>
+      <article class="ref">
+        <div class="meta"><h3>CAFM bevezetési projektek</h3><span>ArchiFM International Kft. · 2021–2024</span></div>
+        <dl>
+          <dt>Projektek</dt><dd>Gránit-Pólus (Westend) ERP-rendszerének támogatása, MR Közösségi Lakásalap bevezetés, ELTE karbantartás-optimalizálás, Corvinus Egyetem Ménesi úti campus, MNB Ingatlan upgrade, Várkapitányság és Nemzetbiztonsági Szakszolgálat implementáció, valamint az ArchiFM Adattárház kialakítása.</dd>
+          <dt>Szerepem</dt><dd>Senior projektmenedzserként és FM szakértőként vezettem a bevezetéseket és az FM folyamatok optimalizálását.</dd>
+          <dt>Eredmény</dt><dd>Digitális átállás, optimalizált FM folyamatok és ERP-integráció. Az ingatlanállomány egy rendszerben kezelhető, a berendezések nyilvántartottak, a karbantartás nyomon követhető.</dd>
+        </dl>
+      </article>
+      <article class="ref">
+        <div class="meta"><h3>IWMS bevezetés</h3><span>Bee Wise Kft. · IBM TRIRIGA · 2024–</span></div>
+        <dl>
+          <dt>Projektek</dt><dd>Elsősorban kórházüzemeltetés szoftveres támogatása: a Közbeszerzési és Ellátási Főigazgatóság (KEF) országos kórházüzemeltetése, a Semmelweis Egyetem pilotprojektje, valamint a Yettel.</dd>
+          <dt>Szerepem</dt><dd>Workshopokat szervezek az FM folyamatok optimalizálására és a szélesebb körű digitalizációra. Én hozom be a projektbe az üzemeltetői szakmai szemléletet, és részt veszek az implementációban, a rendszer optimalizálásában és fejlesztésében.</dd>
+          <dt>Eredmény</dt><dd>Átlátható, ellenőrzött pénzügyi és üzemeltetési folyamatok, egyértelmű funkciók, könnyebb szoftverhasználat. Digitális elszámolás: <b>elektronikus teljesítésigazolás</b> és többszintű jóváhagyási rendszer.</dd>
+        </dl>
+      </article>
+    </div>
+
+    <h3 class="refgroup">Szakmai standardok · LEO</h3>
+    <div class="refs">
+      <article class="ref">
+        <div class="meta"><h3>FM benchmarking adattár</h3><span>LEO Benchmarking munkacsoport</span></div>
+        <dl>
+          <dt>Helyzet</dt><dd>2013 előtt a hazai FM szektorban nem voltak valódi mérőszámok. A munkacsoport 2014 és 2025 között 6 könyvet adott ki épületüzemeltetési mérőszámokkal. Az adatbázis kb. 1500 épületre nőtt, ezért szoftveres támogatásra lett szükség.</dd>
+          <dt>Szerepem</dt><dd>12 éve vagyok a munkacsoport tagja és az FM Benchmarking I–V. könyvek társszerzője. A szoftverfejlesztést az ötlettől a megvalósításig koordináltam, hogy a rendelkezésre álló keretből a lehető legjobb eredmény szülessen.</dd>
+          <dt>Eredmény</dt><dd>Modern, összetett alkalmazás, amely a benchmarking mellett az egyesület bármely kutatását támogatja. Egy év előkészítés után fél év alatt készült el, és a könyvek előkészítését <b>2 évről 6 hónapra</b> rövidíti.</dd>
+        </dl>
+      </article>
+      <article class="ref">
+        <div class="meta"><h3>Stratégiai és értékalapú üzemeltetés</h3><span>LEO munkacsoport · alapító társvezető · 2026–</span></div>
+        <dl>
+          <dt>Helyzet</dt><dd>2026-ban Győri Gyulával azért alapítottuk a munkacsoportot, hogy az épületüzemeltetést stratégiai szintre emeljük, és ehhez tudást, eszközöket és jó gyakorlatokat adjunk át.</dd>
+          <dt>Szerepem</dt><dd>A munkacsoport szervezése és társvezetése, előadások.</dd>
+          <dt>Eredmény</dt><dd><b>MÉRTÉK rendszer</b>, egy módszertan, amely az üzemeltetés minőségét méri. Emellett döntési kockázati mátrix és az etikus üzemeltetés kézikönyve.</dd>
+        </dl>
+      </article>
+      <article class="ref">
+        <div class="meta"><h3>LEO 310 BIM-ajánlás</h3><span>LEO PropTech munkacsoport · 2025–2026</span></div>
+        <dl>
+          <dt>Helyzet</dt><dd>A tervezői BIM-modellek és az üzemeltetési gyakorlat között hiányzott a szakmai és szerződéses kapcsolat, így az átadott adatok ritkán voltak az FM rendszerekben közvetlenül használhatók.</dd>
+          <dt>Szerepem</dt><dd>A PropTech munkacsoport tagjaként részt veszek az ajánlások kidolgozásában.</dd>
+          <dt>Eredmény</dt><dd>A „BIM által támogatott üzemeltetés” ajánlás v1.0-ja 2025 novemberében jelent meg. A bővített v2.0 a lépcsőzetes bevezetés és a beszerzés témáival 2026-ban készül.</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="eletut">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="level">Szintek</div>
+      <div>
+        <h2>Életút</h2>
+        <p>A terepen kezdtem, a szoftveriparban folytattam. Mindkettőből azt hoztam, hogyan működnek valójában az épületek és a csapatok.</p>
+      </div>
+    </div>
+    <ol class="timeline">
+      <li class="key"><div class="when">2024 –</div><div class="rail"></div><div class="what"><h3>IT projektmenedzser, FM szakértő · Bee Wise Kft.</h3><p>Az országos kórházüzemeltetés szoftveres támogatása (IBM TRIRIGA), folyamatoptimalizálás és implementáció. Szervezetfejlesztési workshopok, FM szakmai cikkek, előadások és oktatás.</p></div></li>
+      <li class="key"><div class="when">2021 – 2024</div><div class="rail"></div><div class="what"><h3>Senior projektmenedzser, FM szakértő · ArchiFM International Kft.</h3><p>Az ArchiFM rendszer felépítése és bevezetése, folyamatoptimalizálás, az ArchiFM Adattárház kialakítása. Ekkor léptem át az üzemeltetésből a szoftveriparba, hogy a terepen szerzett tudásomat rendszerekbe fordítsam.</p></div></li>
+      <li><div class="when">2019 – 2022</div><div class="rail"></div><div class="what"><h3>Ügyvezető · Karma Modell Kft.</h3><p>A Garbhadípa Akadémia (természetgyógyász központ) felépítése. Itt tanultam meg, mit jelent egy vállalkozás minden szerepét egyszerre vinni.</p></div></li>
+      <li class="key"><div class="when">2013 – 2019</div><div class="rail"></div><div class="what"><h3>Üzemeltetési projektvezető · Kraft FM Kft.</h3><p>Épületek teljes körű üzemeltetése, kivitelezések tervezése és koordinálása, csapatok irányítása, tenderek. Kapcsolattartás a megrendelőkkel, műszaki dokumentáció és engedélyeztetés, pénzügyi tervezés és kontrolling. Céges szinten én vezettem be és kezeltem az ArchiFM szoftvert.</p></div></li>
+      <li><div class="when">2009 – 2013</div><div class="rail"></div><div class="what"><h3>Műszaki előkészítő · Alfa Group Facility Management Kft.</h3><p>Épületüzemeltetési és létesítménygazdálkodási feladatok teljes körű előkészítése és dokumentálása. Itt tanultam meg a szakma alapjait.</p></div></li>
+      <li><div class="when">2004 – 2009</div><div class="rail"></div><div class="what"><h3>Műszaki menedzser, környezetvédelmi és energiagazdálkodási szakirány · Miskolci Egyetem</h3><p>Gépészmérnöki és Informatikai Kar. Szaktanácstag és valétabizottsági tag a selmeci hagyományok szerint.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="kozosseg">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="level">Közösség</div>
+      <div>
+        <h2>Amit a munkán túl építek</h2>
+        <p>Hiszem, hogy közösség nélkül nincs túlélés. Ezért a szakmán belül és kívül is szervezek, mozgósítok és szemléletet formálok.</p>
+      </div>
+    </div>
+    <div class="comm">
+      <article>
+        <div class="since">2014 óta · alapító tag</div>
+        <h3>LEO Szakmai Egyesület</h3>
+        <ul>
+          <li>Benchmarking munkacsoport: az FM Benchmarking I–V. könyvek társszerzője, az adattár fejlesztésének koordinátora</li>
+          <li>PropTech munkacsoport: a LEO 310 BIM-ajánlások kidolgozása</li>
+          <li>A Stratégiai és értékalapú üzemeltetés munkacsoport alapító társvezetője Győri Gyula mellett (2026–)</li>
+        </ul>
+      </article>
+      <article>
+        <div class="since">2019 óta</div>
+        <h3>PET Kupa Egyesület</h3>
+        <ul>
+          <li>Folyómentő és projektkoordinátor</li>
+          <li>A szemléletformálás munkacsoport vezetője</li>
+          <li>Vállalati kapcsolatok munkacsoport</li>
+          <li>A Marosi PET Kupa főszervezője és versenyigazgatója</li>
+        </ul>
+      </article>
+      <article>
+        <div class="since">helyi közösség</div>
+        <h3>Szervezőként</h3>
+        <ul>
+          <li>Adventi Világító Ablak, Nyírtelek: éves szervező</li>
+          <li>Jótékonysági futások szervezése</li>
+          <li>Önkéntes a TISZA Szigeten</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="kepzesek">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="level">Tudás</div>
+      <div><h2>Képzések és készségek</h2></div>
+    </div>
+    <div class="edu">
+      <div>
+        <h3>Végzettségek, képzések</h3>
+        <ul>
+          <li><b>Műszaki menedzser, környezetvédelmi és energiagazdálkodási szakirány</b><span>Miskolci Egyetem, Gépészmérnöki és Informatikai Kar · 2004–2009</span></li>
+          <li><b>Létesítménygazdálkodási menedzser</b><span>WIFI Hungária · 2014</span></li>
+          <li><b>ESG szakértő</b><span>PwC · 2024</span></li>
+          <li><b>Üzletfejlesztési szakértő · Power BI alapok · Sikeres vezetői kompetenciák</b><span>LABA · 2022–2023</span></li>
+          <li><b>Riporteriskola</b><span>KOS-36, fél év</span></li>
+          <li><b>Folyómentő tanfolyam</b><span>Vízi mentés és környezetvédelem</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Amit hozok egy csapatba</h3>
+        <ul>
+          <li><b>Kommunikáció szóban és írásban</b><span>FM szakmai cikkek, előadások, workshopok, oktatás</span></li>
+          <li><b>Adatalapú szemlélet</b><span>Benchmarking, kontrolling, Power BI</span></li>
+          <li><b>Kapcsolatépítés</b><span>Széles FM szakmai hálózat a LEO-n keresztül</span></li>
+          <li><b>Rendszerszemlélet</b><span>Üzemeltetés, IT és fenntarthatóság együtt</span></li>
+          <li><b>Nyelvek</b><span>Német: középfok · Angol: alapfok</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="epul">
+  <div class="wrap growing">
+    <blockquote>„Szeretném elérni, hogy az FM szakma elinduljon a stratégiai üzemeltetés felé.”<span class="trio">Hatékonyság · gazdaságosság · tudatosság</span></blockquote>
+    <div>
+      <div class="level" style="width:max-content;margin-bottom:14px">Ami most épül</div>
+      <p><b>KenderHáz Napló.</b> Készülő YouTube-csatorna egy kenderbeton ház építéséről, az alapozástól kezdve. Az ökoépítészetet mutatja be közérthetően.</p>
+      <p>A LEO Stratégiai és értékalapú munkacsoportját Győri Gyulával együtt vezetem.</p>
+    </div>
+  </div>
+</section>
+
+<section id="kapcsolat">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="level">Kapcsolat</div>
+      <div>
+        <h2>Beszélgessünk!</h2>
+        <p>FM tanácsadói vagy FM vezetői szerepet keresek a közszférában, ahol az állami épületek működését, rendszereit és a bennük dolgozó embereket együtt fejleszthetem.</p>
+      </div>
+    </div>
+    <div class="contact">
+      <div><small>E-mail</small><a href="mailto:sovari.victoria@gmail.com">sovari.victoria@gmail.com</a></div>
+      <div><small>Telefon</small><a href="tel:+36305152586">+36 30 515 2586</a></div>
+      <div><small>LinkedIn</small><a href="https://www.linkedin.com/in/berberovics-s%C3%B3v%C3%A1ri-vikt%C3%B3ria-32847711a" target="_blank" rel="noopener">Berberovics-Sóvári Viktória</a></div>
+      <div><small>Önéletrajz</small><a href="cv.pdf" target="_blank" rel="noopener">Letöltés PDF-ben</a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">© 2026 Berberovics-Sóvári Viktória · Fenntartható működés szoftverben, épületben és közösségben</div></footer>
+
+<script>
+(function () {
+  const c = document.getElementById('contours');
+  const ctx = c.getContext('2d');
+  function draw() {
+    const r = c.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    c.width = r.width * dpr; c.height = r.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, r.width, r.height);
+    const s = getComputedStyle(document.documentElement);
+    const sage = s.getPropertyValue('--sage').trim();
+    const accent = s.getPropertyValue('--accent').trim();
+    const cx = r.width * 0.86, cy = r.height * 0.32;
+    const rings = 22;
+    for (let i = 1; i <= rings; i++) {
+      const base = i * Math.max(r.width, 700) * 0.028;
+      ctx.beginPath();
+      for (let a = 0; a <= Math.PI * 2 + 0.01; a += 0.03) {
+        const wob = Math.sin(a * 3 + i * 0.35) * (6 + i * 1.1)
+                  + Math.sin(a * 5 - i * 0.2) * (3 + i * 0.5)
+                  + Math.cos(a * 2 + i * 0.6) * i * 0.9;
+        const rad = base + wob;
+        const x = cx + Math.cos(a) * rad * 1.25;
+        const y = cy + Math.sin(a) * rad;
+        a === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = i === 7 ? accent : sage;
+      ctx.globalAlpha = i === 7 ? 0.55 : Math.max(0.08, 0.38 - i * 0.012);
+      ctx.lineWidth = i % 5 === 0 ? 1.4 : 0.8;
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+  draw();
+  let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(draw, 120); });
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', draw);
+  }
+  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+</body>
+</html>
