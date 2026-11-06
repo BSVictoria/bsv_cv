@@ -97,7 +97,24 @@ section { padding: 84px 0; border-bottom: 1px solid var(--line); }
   .pillar:nth-child(odd) { border-right: 0; }
 }
 
+
+/* Minisztériumi ütemek */
+.phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 2px solid var(--ink); }
+.phases li { padding: 22px 22px 26px 0; display: grid; gap: 10px; align-content: start; position: relative; }
+.phases li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+.phases .step { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.phases h3 { font-size: 1.3rem; }
+.phases p { margin: 0; color: var(--muted); font-size: .97rem; }
+.why { margin-top: 40px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 24px 28px; display: grid; grid-template-columns: 160px 1fr; gap: 20px; }
+.why h3 { font-size: 1.35rem; }
+.why p { margin: 0; max-width: 70ch; }
+@media (max-width: 900px) { .phases { grid-template-columns: 1fr 1fr; } .phases li:nth-child(3) { padding-left: 0; border-left: 0; } .phases li:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 560px) { .phases { grid-template-columns: 1fr; } .phases li, .phases li + li { padding: 20px 0; border-left: 0; } .phases li + li { border-top: 1px solid var(--line); } .why { grid-template-columns: 1fr; padding: 20px; } }
+
 /* Referenciák */
+.refgroup { font-family: var(--body); font-weight: 600; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.refs + .refgroup { margin-top: 44px; }
+.ref b { font-weight: 600; color: var(--ink); }
 .refs { display: grid; gap: 18px; }
 .ref { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--sage); border-radius: 6px; padding: 26px 28px; display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
 .ref .meta { display: grid; gap: 4px; align-content: start; }
@@ -142,6 +159,7 @@ section { padding: 84px 0; border-bottom: 1px solid var(--line); }
 
 /* Ami most épül */
 .growing { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; }
+.growing .trio { display: block; margin-top: 14px; font-family: var(--body); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 .growing blockquote { margin: 0; font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.3; }
 .growing p { color: var(--muted); margin: 0 0 12px; }
 @media (max-width: 720px) { .growing { grid-template-columns: 1fr; } }
@@ -150,7 +168,7 @@ section { padding: 84px 0; border-bottom: 1px solid var(--line); }
 #kapcsolat { background: var(--ink); color: var(--bg); border-bottom: 0; }
 #kapcsolat .level { color: var(--sage); border-color: var(--sage); }
 #kapcsolat .sec-head p { color: color-mix(in srgb, var(--bg) 75%, transparent); }
-.contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.contact { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 32px; max-width: 760px; }
 .contact div { border-top: 1px solid color-mix(in srgb, var(--bg) 30%, transparent); padding-top: 14px; }
 .contact small { display: block; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin-bottom: 4px; }
 .contact a { text-decoration-color: var(--accent); text-underline-offset: 4px; word-break: break-word; }
@@ -181,17 +199,17 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
       <div class="eyebrow">FM tanácsadó · FM vezető</div>
       <h1>Az épület akkor működik jól, ha az emberek is jól működnek benne.</h1>
       <p class="motto">Fenntartható működést tervezek: <em>szoftverben</em>, <em>épületben</em> és <em>közösségben</em>.</p>
-      <p class="lead">Több mint 15 éve dolgozom a facility managementben: üzemeltetési projekteket vezettem, CAFM/IWMS rendszereket vezetek be, és workshopokon segítem a csapatokat, hogy a folyamataik a mindennapokban is működjenek. Ezt a tudást szeretném a közszféra épületeinek szolgálatába állítani: átlátható, takarékos és fenntartható működéssel.</p>
+      <p class="lead">16 éve dolgozom a létesítménygazdálkodásban: először az épületüzemeltetés terepén, ma CAFM/IWMS rendszerek bevezetőjeként (ArchiFM, IBM TRIRIGA). Célom, hogy a teljes állami ingatlanvagyon üzemeltetését stratégiai szinten felépítsem és megvalósítsam: egységes üzemeltetési gyakorlattal, jelentős költségmegtakarítással és csökkenő karbonlábnyommal.</p>
       <div class="cta">
         <a class="btn primary" href="#kapcsolat">Beszéljünk</a>
         <a class="btn ghost" href="#referenciak">Referenciáim</a>
       </div>
     </div>
     <div class="facts">
-      <div><strong>6+ év</strong><span>üzemeltetési projektvezetés a Kraft FM-nél</span></div>
-      <div><strong>IBM TRIRIGA</strong><span>IWMS konfiguráció és bevezetés</span></div>
+      <div><strong>16+ év</strong><span>FM tapasztalat, ebből 6+ év üzemeltetési projektvezetőként</span></div>
+      <div><strong>5 év</strong><span>CAFM/IWMS bevezetés: ArchiFM és IBM TRIRIGA</span></div>
       <div><strong>2014 óta</strong><span>a LEO Szakmai Egyesület alapító tagja</span></div>
-      <div><strong>ESG</strong><span>PwC ESG szakértő képzés</span></div>
+      <div><strong>25–30%</strong><span>éves tervszám-túlteljesítés üzemeltetési projektvezetőként</span></div>
     </div>
   </div>
 </header>
@@ -215,7 +233,7 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
       <div class="pillar">
         <h3>CAFM/IWMS és digitalizáció</h3>
         <p>Az ügyfélfolyamatok felmérése és lefordítása rendszerkonfigurációra. Bevezetés, oktatás, és az, hogy a rendszert utána tényleg használják.</p>
-        <div class="tags"><span>IBM TRIRIGA</span><span>CAFM</span><span>PropTech</span><span>Benchmarking</span></div>
+        <div class="tags"><span>ArchiFM</span><span>IBM TRIRIGA</span><span>CAFM/IWMS</span><span>BIM</span><span>PropTech</span><span>Benchmarking</span></div>
       </div>
       <div class="pillar">
         <h3>Tanácsadás és facilitáció</h3>
@@ -236,27 +254,35 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
     <div class="sec-head">
       <div class="level">Küldetés</div>
       <div>
-        <h2>Amit a minisztérium FM területére hoznék</h2>
-        <p>Egy állami épületállomány üzemeltetése egyszerre szakmai, gazdasági és társadalmi felelősség. Ehhez ezt adnám hozzá:</p>
+        <h2>Az állami ingatlanvagyon egységes üzemeltetése</h2>
+        <p>Az állami épületek ma sokféle gyakorlat, szerződés és adatforma szerint működnek. Ezt szeretném egy egységes, mérhető és fenntartható rendszerré építeni, stratégiai szinten megtervezve és a napi működésig végigvíve.</p>
       </div>
     </div>
-    <div class="pillars">
-      <div class="pillar">
-        <h3>Átlátható épületvagyon</h3>
-        <p>CAFM/IWMS tapasztalatommal segítek, hogy az épületekről, területekről, szerződésekről és költségekről egy helyen, megbízható adat álljon rendelkezésre. Erre lehet megalapozott döntéseket építeni.</p>
-      </div>
-      <div class="pillar">
-        <h3>Mérhető szolgáltatói teljesítmény</h3>
-        <p>Szolgáltatói oldalról ismerem az üzemeltetési szerződéseket. Tudom, milyen KPI-ok és benchmark-adatok mutatják meg, hogy a közpénzből vásárolt szolgáltatás valóban teljesít-e.</p>
-      </div>
-      <div class="pillar">
-        <h3>Energiahatékonyság és ESG</h3>
-        <p>A közszféra épületeinek példát kell mutatniuk a fenntarthatóságban. Környezetvédelmi végzettségemmel és ESG képzésemmel ezt a gyakorlati üzemeltetés nyelvére fordítom le.</p>
-      </div>
-      <div class="pillar">
-        <h3>Együttműködés sok szereplővel</h3>
-        <p>Workshop facilitátorként abban vagyok a legjobb, hogy a különböző szervezeti egységek, szolgáltatók és felhasználók közös célra és közös nyelvre találjanak.</p>
-      </div>
+    <ol class="phases">
+      <li>
+        <span class="step">1. ütem</span>
+        <h3>Átlátható ingatlanvagyon</h3>
+        <p>Egységes ingatlan- és eszköznyilvántartás egy CAFM/IWMS rendszerben: épületek, területek, berendezések, szerződések és költségek egy helyen, összevethető formában. Erre épülhetnek a megalapozott döntések.</p>
+      </li>
+      <li>
+        <span class="step">2. ütem</span>
+        <h3>Egységes üzemeltetési standard</h3>
+        <p>Közös szolgáltatási szintek, folyamatok és KPI-ok minden intézmény számára, egységes szerződéses és riportálási sablonokkal. Így az épületek teljesítménye egymással és a piaci benchmarkokkal is összemérhető.</p>
+      </li>
+      <li>
+        <span class="step">3. ütem</span>
+        <h3>Költségmegtakarítás</h3>
+        <p>Összevont beszerzés, tudatos szolgáltatásmenedzsment és a párhuzamosságok megszüntetése. A megtakarítást az adatok mutatják ki, nem becslések.</p>
+      </li>
+      <li>
+        <span class="step">4. ütem</span>
+        <h3>Karbonlábnyom-csökkentés</h3>
+        <p>Energia- és közműfogyasztás-monitoring, a karbonlábnyom rendszeres mérése és egy épületenkénti dekarbonizációs ütemterv. Az állami épületek így példát mutathatnak a fenntartható működésben.</p>
+      </li>
+    </ol>
+    <div class="why">
+      <h3>Miért én?</h3>
+      <p>16 éves FM pályám alatt az üzemeltetést három oldalról ismertem meg. A terepen dolgoztam, ebből hat évig üzemeltetési projektvezetőként. Öt éve szoftveres oldalon vezetek be CAFM/IWMS rendszereket. A LEO-ban pedig a szakma közös standardjain dolgozom: a benchmarking adattárházon, a LEO 310 BIM-ajánlásokon és a MÉRTÉK rendszeren, amely az üzemeltetés minőségét méri. A közszféra intézményeit is belülről ismerem: dolgoztam a Közbeszerzési és Ellátási Főigazgatóság országos kórházüzemeltetésén, a Semmelweis Egyetem, az ELTE, a Corvinus Egyetem, az MNB Ingatlan, a Várkapitányság és a Nemzetbiztonsági Szakszolgálat projektjein, és KEOP pályázatokat is bíráltam. Workshop facilitátorként ahhoz is értek, hogy sok intézmény és szolgáltató egy irányba mozduljon.</p>
     </div>
   </div>
 </section>
@@ -267,40 +293,61 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
       <div class="level">Szerkezet</div>
       <div>
         <h2>Referenciák</h2>
-        <p>Néhány projekt, amire büszke vagyok: mi volt a helyzet, mit csináltam, és mi lett belőle.</p>
+        <p>Ipari létesítményektől egyetemeken és kórházakon át az országos hálózatokig. Mi volt a feladat, mit csináltam, és mi lett belőle.</p>
       </div>
     </div>
+    <h3 class="refgroup">Üzemeltetés és digitalizáció</h3>
     <div class="refs">
       <article class="ref">
         <div class="meta"><h3>Üzemeltetési projektvezetés</h3><span>Kraft FM · 2013–2019</span></div>
         <dl>
-          <dt>Helyzet</dt><dd><span class="todo">Ide jön: milyen ügyfél / portfólió, mekkora volt a feladat</span></dd>
-          <dt>Szerepem</dt><dd>Üzemeltetési projektvezetőként feleltem a szolgáltatás működéséért és az ügyfélkapcsolatért.</dd>
-          <dt>Eredmény</dt><dd><span class="todo">Ide jön: számokkal, ha lehet (épületek, m², csapat, megtakarítás)</span></dd>
+          <dt>Portfólió</dt><dd>Főként ipari létesítmények (GDF SUEZ, Dunamenti Erőmű, Hosszúréti energiaközpont, Dreher sörgyár), irodaházak (Millpark, Quadrum), speciális projektek (strip mall, büntetés-végrehajtási intézet) és országos hálózatok (UPC, ITSH, Főgáz).</dd>
+          <dt>Szerepem</dt><dd>A tender árazásától az ügyfélkapcsolaton és a fenntartható üzemeltetésen át a havi kontrolling jelentésig mindent én koordináltam. Én feleltem a karbantartó csapatokért és az alvállalkozókért is.</dd>
+          <dt>Eredmény</dt><dd>Elégedett ügyfelek, az éves tervszámok rendszeres, <b>25–30%-os túlteljesítése</b>. Országos hibajavítási hálózatot építettem fel szerződött partnerekkel, havária-biztosítással.</dd>
         </dl>
       </article>
       <article class="ref">
-        <div class="meta"><h3>IWMS bevezetés</h3><span>Bee Wise Kft. · IBM TRIRIGA</span></div>
+        <div class="meta"><h3>CAFM bevezetési projektek</h3><span>ArchiFM International Kft. · 2021–2024</span></div>
         <dl>
-          <dt>Helyzet</dt><dd><span class="todo">Ide jön: az ügyfél (akár névtelenül) és a cél</span></dd>
-          <dt>Szerepem</dt><dd>Projektmenedzser és FM szakértő: folyamatfelmérő workshopok, konfiguráció, bevezetés.</dd>
-          <dt>Eredmény</dt><dd><span class="todo">Ide jön: felhasználók száma, modulok, határidő</span></dd>
+          <dt>Projektek</dt><dd>Gránit-Pólus (Westend) ERP-rendszerének támogatása, MR Közösségi Lakásalap bevezetés, ELTE karbantartás-optimalizálás, Corvinus Egyetem Ménesi úti campus, MNB Ingatlan upgrade, Várkapitányság és Nemzetbiztonsági Szakszolgálat implementáció, valamint az ArchiFM Adattárház kialakítása.</dd>
+          <dt>Szerepem</dt><dd>Senior projektmenedzserként és FM szakértőként vezettem a bevezetéseket és az FM folyamatok optimalizálását.</dd>
+          <dt>Eredmény</dt><dd>Digitális átállás, optimalizált FM folyamatok és ERP-integráció. Az ingatlanállomány egy rendszerben kezelhető, a berendezések nyilvántartottak, a karbantartás nyomon követhető.</dd>
         </dl>
       </article>
       <article class="ref">
-        <div class="meta"><h3>FM benchmarking adattárház</h3><span>LEO Szakmai Egyesület</span></div>
+        <div class="meta"><h3>IWMS bevezetés</h3><span>Bee Wise Kft. · IBM TRIRIGA · 2024–</span></div>
         <dl>
-          <dt>Helyzet</dt><dd>A hazai FM szakmának nem volt közös, összehasonlítható adatbázisa.</dd>
-          <dt>Szerepem</dt><dd>A Benchmarking munkacsoportban az adattárház fejlesztésének projektvezetője voltam.</dd>
-          <dt>Eredmény</dt><dd><span class="todo">Ide jön: hány cég csatlakozott, mit tud ma az adattárház</span></dd>
+          <dt>Projektek</dt><dd>Elsősorban kórházüzemeltetés szoftveres támogatása: a Közbeszerzési és Ellátási Főigazgatóság (KEF) országos kórházüzemeltetése, a Semmelweis Egyetem pilotprojektje, valamint a Yettel.</dd>
+          <dt>Szerepem</dt><dd>Workshopokat szervezek az FM folyamatok optimalizálására és a szélesebb körű digitalizációra. Én hozom be a projektbe az üzemeltetői szakmai szemléletet, és részt veszek az implementációban, a rendszer optimalizálásában és fejlesztésében.</dd>
+          <dt>Eredmény</dt><dd>Átlátható, ellenőrzött pénzügyi és üzemeltetési folyamatok, egyértelmű funkciók, könnyebb szoftverhasználat. Digitális elszámolás: <b>elektronikus teljesítésigazolás</b> és többszintű jóváhagyási rendszer.</dd>
         </dl>
       </article>
-      <article class="ref empty">
-        <div class="meta"><h3>Következő referencia</h3><span>Hely a te projektjeidnek</span></div>
+    </div>
+
+    <h3 class="refgroup">Szakmai standardok · LEO</h3>
+    <div class="refs">
+      <article class="ref">
+        <div class="meta"><h3>FM benchmarking adattár</h3><span>LEO Benchmarking munkacsoport</span></div>
         <dl>
-          <dt>Helyzet</dt><dd><span class="todo">1–2 mondat</span></dd>
-          <dt>Szerepem</dt><dd><span class="todo">1–2 mondat</span></dd>
-          <dt>Eredmény</dt><dd><span class="todo">lehetőleg számmal</span></dd>
+          <dt>Helyzet</dt><dd>2013 előtt a hazai FM szektorban nem voltak valódi mérőszámok. A munkacsoport 2014 és 2025 között 6 könyvet adott ki épületüzemeltetési mérőszámokkal. Az adatbázis kb. 1500 épületre nőtt, ezért szoftveres támogatásra lett szükség.</dd>
+          <dt>Szerepem</dt><dd>12 éve vagyok a munkacsoport tagja és az FM Benchmarking I–V. könyvek társszerzője. A szoftverfejlesztést az ötlettől a megvalósításig koordináltam, hogy a rendelkezésre álló keretből a lehető legjobb eredmény szülessen.</dd>
+          <dt>Eredmény</dt><dd>Modern, összetett alkalmazás, amely a benchmarking mellett az egyesület bármely kutatását támogatja. Egy év előkészítés után fél év alatt készült el, és a könyvek előkészítését <b>2 évről 6 hónapra</b> rövidíti.</dd>
+        </dl>
+      </article>
+      <article class="ref">
+        <div class="meta"><h3>Stratégiai és értékalapú üzemeltetés</h3><span>LEO munkacsoport · alapító társvezető · 2026–</span></div>
+        <dl>
+          <dt>Helyzet</dt><dd>2026-ban Győri Gyulával azért alapítottuk a munkacsoportot, hogy az épületüzemeltetést stratégiai szintre emeljük, és ehhez tudást, eszközöket és jó gyakorlatokat adjunk át.</dd>
+          <dt>Szerepem</dt><dd>A munkacsoport szervezése és társvezetése, előadások.</dd>
+          <dt>Eredmény</dt><dd><b>MÉRTÉK rendszer</b>, egy módszertan, amely az üzemeltetés minőségét méri. Emellett döntési kockázati mátrix és az etikus üzemeltetés kézikönyve.</dd>
+        </dl>
+      </article>
+      <article class="ref">
+        <div class="meta"><h3>LEO 310 BIM-ajánlás</h3><span>LEO PropTech munkacsoport · 2025–2026</span></div>
+        <dl>
+          <dt>Helyzet</dt><dd>A tervezői BIM-modellek és az üzemeltetési gyakorlat között hiányzott a szakmai és szerződéses kapcsolat, így az átadott adatok ritkán voltak az FM rendszerekben közvetlenül használhatók.</dd>
+          <dt>Szerepem</dt><dd>A PropTech munkacsoport tagjaként részt veszek az ajánlások kidolgozásában.</dd>
+          <dt>Eredmény</dt><dd>A „BIM által támogatott üzemeltetés” ajánlás v1.0-ja 2025 novemberében jelent meg. A bővített v2.0 a lépcsőzetes bevezetés és a beszerzés témáival 2026-ban készül.</dd>
         </dl>
       </article>
     </div>
@@ -317,11 +364,12 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
       </div>
     </div>
     <ol class="timeline">
-      <li class="key"><div class="when">2021 –</div><div class="rail"></div><div class="what"><h3>IT projektmenedzser, FM szakértő · Bee Wise Kft.</h3><p>IBM TRIRIGA konfiguráció és bevezetés, ügyfélfolyamatok tervezése, tanácsadás és workshop facilitáció. A CAFM szoftveriparba 2021-ben léptem át.</p></div></li>
-      <li><div class="when">2019 – 2021</div><div class="rail"></div><div class="what"><h3>Saját vállalkozás · Nyíregyháza</h3><p>Természetgyógyász központ vezetése. Itt tanultam meg, mit jelent a vállalkozás minden szerepét egyszerre vinni.</p></div></li>
-      <li class="key"><div class="when">2013 – 2019</div><div class="rail"></div><div class="what"><h3>Üzemeltetési projektvezető · Kraft FM</h3><p>Több mint hat év a facility management terepén, üzemeltetési projektek felelőseként.</p></div></li>
-      <li><div class="when">korábban</div><div class="rail"></div><div class="what"><h3>Energiagazdálkodás és műszaki asszisztencia</h3><p>Három év műszaki asszisztensként egy osztrák tulajdonú FM cégnél: itt tanultam meg a szakma alapjait. Utána rövid időszak egy energiagazdálkodási cégnél.</p></div></li>
-      <li><div class="when">egyetem</div><div class="rail"></div><div class="what"><h3>Műszaki menedzser, környezetvédelmi szakirány · Miskolci Egyetem</h3><p>Gépészmérnöki és Informatikai Kar. Szaktanácstag és valétabizottsági tag a selmeci hagyományok szerint.</p></div></li>
+      <li class="key"><div class="when">2024 –</div><div class="rail"></div><div class="what"><h3>IT projektmenedzser, FM szakértő · Bee Wise Kft.</h3><p>Az országos kórházüzemeltetés szoftveres támogatása (IBM TRIRIGA), folyamatoptimalizálás és implementáció. Szervezetfejlesztési workshopok, FM szakmai cikkek, előadások és oktatás.</p></div></li>
+      <li class="key"><div class="when">2021 – 2024</div><div class="rail"></div><div class="what"><h3>Senior projektmenedzser, FM szakértő · ArchiFM International Kft.</h3><p>Az ArchiFM rendszer felépítése és bevezetése, folyamatoptimalizálás, az ArchiFM Adattárház kialakítása. Ekkor léptem át az üzemeltetésből a szoftveriparba, hogy a terepen szerzett tudásomat rendszerekbe fordítsam.</p></div></li>
+      <li><div class="when">2019 – 2022</div><div class="rail"></div><div class="what"><h3>Ügyvezető · Karma Modell Kft.</h3><p>A Garbhadípa Akadémia (természetgyógyász központ) felépítése. Itt tanultam meg, mit jelent egy vállalkozás minden szerepét egyszerre vinni.</p></div></li>
+      <li class="key"><div class="when">2013 – 2019</div><div class="rail"></div><div class="what"><h3>Üzemeltetési projektvezető · Kraft FM Kft.</h3><p>Épületek teljes körű üzemeltetése, kivitelezések tervezése és koordinálása, csapatok irányítása, tenderek. Kapcsolattartás a megrendelőkkel, műszaki dokumentáció és engedélyeztetés, pénzügyi tervezés és kontrolling. Céges szinten én vezettem be és kezeltem az ArchiFM szoftvert.</p></div></li>
+      <li><div class="when">2009 – 2013</div><div class="rail"></div><div class="what"><h3>Műszaki előkészítő · Alfa Group Facility Management Kft.</h3><p>Épületüzemeltetési és létesítménygazdálkodási feladatok teljes körű előkészítése és dokumentálása. Itt tanultam meg a szakma alapjait.</p></div></li>
+      <li><div class="when">2004 – 2009</div><div class="rail"></div><div class="what"><h3>Műszaki menedzser, környezetvédelmi és energiagazdálkodási szakirány · Miskolci Egyetem</h3><p>Gépészmérnöki és Informatikai Kar. Szaktanácstag és valétabizottsági tag a selmeci hagyományok szerint.</p></div></li>
     </ol>
   </div>
 </section>
@@ -340,18 +388,19 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
         <div class="since">2014 óta · alapító tag</div>
         <h3>LEO Szakmai Egyesület</h3>
         <ul>
-          <li>Benchmarking munkacsoport, projektvezetés</li>
-          <li>PropTech munkacsoport</li>
-          <li>Stratégiai és értékalapú munkacsoport szervezése</li>
+          <li>Benchmarking munkacsoport: az FM Benchmarking I–V. könyvek társszerzője, az adattár fejlesztésének koordinátora</li>
+          <li>PropTech munkacsoport: a LEO 310 BIM-ajánlások kidolgozása</li>
+          <li>A Stratégiai és értékalapú üzemeltetés munkacsoport alapító társvezetője Győri Gyula mellett (2026–)</li>
         </ul>
       </article>
       <article>
-        <div class="since">2018 óta</div>
+        <div class="since">2019 óta</div>
         <h3>PET Kupa Egyesület</h3>
         <ul>
+          <li>Folyómentő és projektkoordinátor</li>
           <li>A szemléletformálás munkacsoport vezetője</li>
           <li>Vállalati kapcsolatok munkacsoport</li>
-          <li>A marosi PET Kupa főszervezője</li>
+          <li>A Marosi PET Kupa főszervezője és versenyigazgatója</li>
         </ul>
       </article>
       <article>
@@ -377,8 +426,10 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
       <div>
         <h3>Végzettségek, képzések</h3>
         <ul>
-          <li><b>Műszaki menedzser, környezetvédelmi szakirány</b><span>Miskolci Egyetem, Gépészmérnöki és Informatikai Kar</span></li>
-          <li><b>ESG szakértő képzés</b><span>PwC</span></li>
+          <li><b>Műszaki menedzser, környezetvédelmi és energiagazdálkodási szakirány</b><span>Miskolci Egyetem, Gépészmérnöki és Informatikai Kar · 2004–2009</span></li>
+          <li><b>Létesítménygazdálkodási menedzser</b><span>WIFI Hungária · 2014</span></li>
+          <li><b>ESG szakértő</b><span>PwC · 2024</span></li>
+          <li><b>Üzletfejlesztési szakértő · Power BI alapok · Sikeres vezetői kompetenciák</b><span>LABA · 2022–2023</span></li>
           <li><b>Riporteriskola</b><span>KOS-36, fél év</span></li>
           <li><b>Folyómentő tanfolyam</b><span>Vízi mentés és környezetvédelem</span></li>
         </ul>
@@ -386,10 +437,11 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
       <div>
         <h3>Amit hozok egy csapatba</h3>
         <ul>
-          <li><b>Kommunikáció szóban és írásban</b><span>Workshopok, prezentációk, konferencia-megjelenések</span></li>
+          <li><b>Kommunikáció szóban és írásban</b><span>FM szakmai cikkek, előadások, workshopok, oktatás</span></li>
+          <li><b>Adatalapú szemlélet</b><span>Benchmarking, kontrolling, Power BI</span></li>
           <li><b>Kapcsolatépítés</b><span>Széles FM szakmai hálózat a LEO-n keresztül</span></li>
           <li><b>Rendszerszemlélet</b><span>Üzemeltetés, IT és fenntarthatóság együtt</span></li>
-          <li><b>Nyelvek</b><span class="todo">Ide jön: nyelvek és szintek</span></li>
+          <li><b>Nyelvek</b><span>Német: középfok · Angol: alapfok</span></li>
         </ul>
       </div>
     </div>
@@ -398,11 +450,11 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
 
 <section id="epul">
   <div class="wrap growing">
-    <blockquote>„Az edukáció és a szemléletformálás most a legfontosabb feladatunk, az FM-ben és a zöld területen egyaránt.”</blockquote>
+    <blockquote>„Szeretném elérni, hogy az FM szakma elinduljon a stratégiai üzemeltetés felé.”<span class="trio">Hatékonyság · gazdaságosság · tudatosság</span></blockquote>
     <div>
       <div class="level" style="width:max-content;margin-bottom:14px">Ami most épül</div>
       <p><b>KenderHáz Napló.</b> Készülő YouTube-csatorna egy kenderbeton ház építéséről, az alapozástól kezdve. Az ökoépítészetet mutatja be közérthetően.</p>
-      <p>A LEO-ban Győri Gyulával egy új, stratégiai és értékalapú munkacsoportot szervezünk.</p>
+      <p>A LEO Stratégiai és értékalapú munkacsoportját Győri Gyulával együtt vezetem.</p>
     </div>
   </div>
 </section>
@@ -418,8 +470,9 @@ footer { padding: 24px 0 40px; background: var(--ink); color: color-mix(in srgb,
     </div>
     <div class="contact">
       <div><small>E-mail</small><a href="mailto:sovari.victoria@gmail.com">sovari.victoria@gmail.com</a></div>
-      <div><small>LinkedIn</small><span class="todo">Ide jön a profil linkje</span></div>
-      <div><small>Önéletrajz</small><span class="todo">Ide jön a PDF letöltése</span></div>
+      <div><small>Telefon</small><a href="tel:+36305152586">+36 30 515 2586</a></div>
+      <div><small>LinkedIn</small><a href="https://www.linkedin.com/in/berberovics-s%C3%B3v%C3%A1ri-vikt%C3%B3ria-32847711a" target="_blank" rel="noopener">Berberovics-Sóvári Viktória</a></div>
+      <div><small>Önéletrajz</small><a href="cv.pdf" target="_blank" rel="noopener">Letöltés PDF-ben</a></div>
     </div>
   </div>
 </section>
